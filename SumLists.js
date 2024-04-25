@@ -77,7 +77,7 @@ class LinkedList {
               value = 0
               value = 7
               value = 12
-              result = 2
+              result.data = 2
 
               more = ...
 
@@ -91,7 +91,7 @@ class LinkedList {
               value = 1
               value = 2
               value = 11
-              result = 1
+              result.data = 1
 
               more = .. 
 
