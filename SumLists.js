@@ -34,20 +34,6 @@ class LinkedList {
       return;
   }
 
-  appendList(listToAppend) {
-      if (listToAppend === null) {
-          return;
-      }
-
-     let itr = listToAppend.head;
-      while (itr !== null) {
-          this.appendNode(itr.data)
-          itr = itr.next;
-      }
-
-      return;
-  }
-
   display() {
       let itr = this.head;
       const result = [];
@@ -161,7 +147,9 @@ class LinkedList {
                                       value >= 10 ? 1 : 0
                                   )
 
-          result.appendList(more);
+          if (more !== null) {
+              result.tail.next = more.head;
+          }
       }
 
       return result;
