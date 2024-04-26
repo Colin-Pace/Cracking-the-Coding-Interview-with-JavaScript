@@ -73,11 +73,11 @@ class LinkedList {
               listTwoNode = 5
               carry = 0
 
-              result = Node
+              result = LinkedList
               value = 0
               value = 7
               value = 12
-              result.data = 2
+              result.head.data = 2
 
               more = ...
 
@@ -87,13 +87,13 @@ class LinkedList {
               listTwoNode = 9
               carry = 1
 
-              result = Node
+              result = LinkedList
               value = 1
               value = 2
               value = 11
-              result.data = 1
+              result.head.data = 1
 
-              more = .. 
+              more = ... 
 
           Frame: 3
 
@@ -101,11 +101,11 @@ class LinkedList {
               listTwoNode = 2
               carry = 1
 
-              result = Node
+              result = LinkedList
               value = 1
               value = 7
               value = 9
-              result.data = 9
+              result.head.data = 9
 
               more = ...
 
