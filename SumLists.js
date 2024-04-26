@@ -22,7 +22,7 @@ class LinkedList {
       this.tail = null;
   }
 
-  add(data) {
+  appendNode(data) {
       if (!this.head) {
         this.head = new Node(data);
         this.tail = this.head;
@@ -41,7 +41,7 @@ class LinkedList {
 
      let itr = listToAppend.head;
       while (itr !== null) {
-          this.add(itr.data)
+          this.appendNode(itr.data)
           itr = itr.next;
       }
 
@@ -153,7 +153,7 @@ class LinkedList {
           value += listTwoNode.data;
       }
 
-      result.add(value % 10);
+      result.appendNode(value % 10);
       if (listOneNode !== null || listTwoNode !== null) {
           let more =  this.addLists(
                                       listOneNode == null ? null : listOneNode.next,
@@ -174,8 +174,8 @@ const inputTwo = [5, 9, 2];
 const listOne = new LinkedList;
 const listTwo = new LinkedList;
 
-inputOne.forEach(element => listOne.add(element));
-inputTwo.forEach(element => listTwo.add(element));
+inputOne.forEach(element => listOne.appendNode(element));
+inputTwo.forEach(element => listTwo.appendNode(element));
 
 const answer = listTwo.addLists(listOne.head, listTwo.head, 0);
 answer.display();
