@@ -125,33 +125,47 @@ class LinkedList {
               return 2 > 1 > 9 > null
   */
 
+  // The addLists method receives three arguments and turns them into parameters, two nodes of that are the heads of two different linked lists and a carry variable initially set to 0
   addLists(listOneNode, listTwoNode, carry) {
+      // The base case has null nodes and zero carry over from the previous frame; the return statement here precedes the recursive call and thereby achieves the start of the unwinding of the recursive call stack
       if (listOneNode === null && listTwoNode === null && carry === 0) {
           return null;
       }
 
+      // Declare variables for the result linked list and the total value of the nodes and carry, defining the value initially as equal to the carry to start the addition process
       const result = new LinkedList();
       let value = carry;
+      
+      // Add the first node's value
       if (listOneNode !== null) {
           value += listOneNode.data;
       }
+
+      // And the second node's value
       if (listTwoNode !== null) {
           value += listTwoNode.data;
       }
 
+      // Append a head node to the result linked list with the value of the first digit in the value variable, which is achieved by the modulus operator with the value of 10
       result.appendNode(value % 10);
+      
+      // Recurse if either of the nodes does not equal null
       if (listOneNode !== null || listTwoNode !== null) {
+          // Define a variable for the linked list as it is built in later frames of the recursive call stack, which later will be appended to this frame's result linked list with a head node defined
           let more =  this.addLists(
+                                      // Pass in either null or the next node in the first and second linked lists, and also pass either a 1 or 0 depending on whether the value of the addition of the nodes and the carry is greater than or equal to 10
                                       listOneNode == null ? null : listOneNode.next,
                                       listTwoNode == null ? null : listTwoNode.next,
                                       value >= 10 ? 1 : 0
                                   )
 
+          // If more is not null, connect this frame's result linked list with the later frames' returned linked list, which is achieved by connecting the tail of this frame's linked list to the head of the more linked list
           if (more !== null) {
               result.tail.next = more.head;
           }
       }
 
+      // Return the result linked list, which after building and unwinding the callstack, gives the answer for the addition problem
       return result;
   }
 }
