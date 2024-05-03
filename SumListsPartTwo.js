@@ -138,7 +138,7 @@ class LinkedList {
       result = 1 > null
 
       sum.sum = 1 > null
-      sum.carry = 1.1
+      sum.carry = 1
 
       return sum
 
@@ -146,11 +146,46 @@ class LinkedList {
 
       sum
           1 > null
-          1.1
+          1
       
-      val = 10.1
+      val = 10
       result = LinkedList
-      result = 1.01 > 1 > null
+      result = 0 > 1 > null
+
+      sum.sum = 0 > 1 > null
+      sum.carry = 1
+
+      return sum
+
+  Frame: 2
+
+      sum
+          0 > 1 > null
+          1
+      
+      val = 8
+      result = LinkedList
+      result = 8 > 0 > 1 > null
+
+      sum.sum = 8 > 0 > 1 > null
+      sum.carry = 0
+
+      return sum
+
+  Frame: 1
+
+      sum
+          8 > 0 > 1 > null
+          0
+      
+      val = 1
+      result = LinkedList
+      result = 1 > 8 > 0 > 1 > null
+
+      sum.sum = 1 > 8 > 0 > 1 > null
+      sum.carry = 0
+
+      return sum
 
 */
 
@@ -188,7 +223,6 @@ class LinkedList {
       }
 
       let sum = this.addListsHelper(listOneNode, listTwoNode);
-      //console.log(sum.sum.display());
 
       if (sum.carry === 0) {
           return sum.sum;
