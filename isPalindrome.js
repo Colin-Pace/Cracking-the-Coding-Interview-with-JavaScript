@@ -15,12 +15,12 @@ class Node {
 }
 
 class LinkedList {
-  constructor() {
+    constructor() {
       this.head = null;
       this.tail = null;
-  }
+}
 
-  appendNode(data) {
+    appendNode(data) {
       const node = new Node(data);
       if (!this.head) {
           this.head = node;
@@ -31,34 +31,39 @@ class LinkedList {
       }
   }
 
-  isPalindrome() {
+    isPalindrome() {
       if (!this.head) {
           return false;
       }
 
-      let dataStore = {};
-      let cur = this.head;
-      
-      while (cur) {
-          if (!dataStore[cur.data]) {
-              dataStore[cur.data] = 1;
-          } else {
-              dataStore[cur.data] += 1;
-          }
+      // Make a stack to hold the first half of the list and fast and slow runners to iterate the list to find the length as either even or odd
+      const stack = [];
+      let fast = this.head;
+      let slow = this.head;
 
-          cur = cur.next;
+      // Build the stack from the slow runner
+      while (fast !== null && fast.next !== null) {
+        stack.push(slow.data);
+        slow = slow.next;
+        fast = fast.next.next;
       }
 
-      let odd = 0;
-      for (let i in dataStore) {
-          if (dataStore[i] % 2 !== 0) {
-              odd++;
-          }
-          if (odd > 1) {
+      // If the fast runner is still not null, then the list is odd, and the slow runner should be incremented to the next node to start the comparison with the stack
+      if (fast !== null) {
+          slow = slow.next;
+      }
+
+      // Pop off and compare the top of the stack to the slow runner to check for palindrome
+      while (slow !== null) {
+          const top = stack.pop();
+          // If the top and slow data don't match, return early
+          if (top !== slow.data) {
               return false;
           }
+          slow = slow.next;
       }
 
+      // Return true since the slow runner made it to the end of the list, comparing with the stack along the way
       return true;
   }
 }
